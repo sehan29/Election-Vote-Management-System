@@ -1,3 +1,5 @@
+import user_dash as p
+
 class Citizen:
     
     def __init__(self,name,age,nic,province):
