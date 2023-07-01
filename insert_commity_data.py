@@ -1,8 +1,6 @@
 import mysql.connector
 con = mysql.connector.connect(host="localhost", user="root", password="",database="election_data")
-    
-
-    
+     
 
 class Database:
     
@@ -11,7 +9,7 @@ class Database:
         try:
             
             cursor = con.cursor()
-            mysql_query = "INSERT INTO candidator_table name, age, nic, province VALUES(%s,%s,%s,%s)"
+            mysql_query = "INSERT INTO commity_table name,president VALUES(%s,%s)"
             values_of_citizen("asas","asas","asasa","sas")
             cursor.execute(mysql_query,values_of_citizen)
             con.commit()

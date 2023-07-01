@@ -22,4 +22,5 @@ class Database:
         
         finally:
             
+            con.close()
             cursor.close()
