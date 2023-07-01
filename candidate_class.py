@@ -19,7 +19,6 @@ class Candidate:
         self.__age = age
         
     def set_qualification(self,qualifications):
-        
         self.__education_qualification = qualifications
         
     def set_province(self,province):
