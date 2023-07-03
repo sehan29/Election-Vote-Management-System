@@ -1,13 +1,12 @@
-import user_dash as p
 
 class Citizen:
     
     def __init__(self,name,age,nic,province):
         
-        self.__name = name
-        self.__age = age
+        self.name = name
+        self.age = age
         self.nic = nic
-        self.__province = province
+        self.province = province
         
     
     def set_name(self,name):
@@ -21,4 +20,8 @@ class Citizen:
         
     def set_province(self,province):
         self.province = province
+        
+    def get_name(self):
+        
+        print(self.name)
         

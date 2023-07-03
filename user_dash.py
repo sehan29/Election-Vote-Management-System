@@ -3,8 +3,27 @@ def index():
     print("\t\tELECTION VOTE CALCULATTING SYSTEM")
     print("-----------------------------------------------------------------\n")
     print("1. Election Administration.")
-    print("2. Vote")
-    print("3. Exit")
+    print("2. Vote.")
+    print("3. Exit.")
     print("\n-----------------------------------------------------------------")
             
 
+
+def administration_function():
+    
+    print("-----------------------------------------------------------------")
+    print("\t\tELECTION VOTE CALCULATTING SYSTEM")
+    print("-----------------------------------------------------------------\n")
+    print("1. Register New Party.")
+    print("2. Register New Politicle Candidator.")
+    print("3. Register New Citizen.")
+    print("4. Back.")
+    print("\n-----------------------------------------------------------------")
+    
+
+def comman_header():
+    
+    print("-----------------------------------------------------------------")
+    print("\t\tELECTION VOTE CALCULATTING SYSTEM")
+    print("-----------------------------------------------------------------\n")
+    
