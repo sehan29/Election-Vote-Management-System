@@ -4,8 +4,10 @@ import sys
 import main_fun as main_function
 from user_dash import administration_function
 from user_dash import comman_header
+from user_dash import registered_citizen_template
 from citizen_class import Citizen
 import Insert_citizen_data as database_insert
+from fetch_citizen_data import Retrive_data
 def selectting_user_operation(selection):
     
     if(selection == 1):
@@ -63,6 +65,8 @@ def administration_operation(selection):
         
     elif(selection == 6):
         print(selection)
+        os.system('cls')
+        view_registered_citizen()
         
     elif(selection == 7):
         print(selection)
@@ -98,5 +102,10 @@ def get_citizen_details():
         
     
     
+    
+def view_registered_citizen():
+    comman_header()
+    registered_citizen_template()
+    Retrive_data.fetch_data()
     
     
