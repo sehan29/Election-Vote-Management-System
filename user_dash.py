@@ -17,7 +17,10 @@ def administration_function():
     print("1. Register New Party.")
     print("2. Register New Politicle Candidator.")
     print("3. Register New Citizen.")
-    print("4. Back.")
+    print("4. View Registered Parties.")
+    print("5. View Registered Politicle Candidator.")
+    print("6. View Registered Citizen.")
+    print("7. Back.")
     print("\n-----------------------------------------------------------------")
     
 

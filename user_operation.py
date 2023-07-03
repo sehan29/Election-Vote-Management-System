@@ -58,6 +58,15 @@ def administration_operation(selection):
     elif(selection == 4):
         print(selection)
         
+    elif(selection == 5):
+        print(selection)
+        
+    elif(selection == 6):
+        print(selection)
+        
+    elif(selection == 7):
+        print(selection)
+        
     else:
         
         print("Invalid Index")
