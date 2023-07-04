@@ -11,6 +11,8 @@ import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
 from politicle_ import Politicle_part
 from registration_parties import Database
+from candidate_class import Candidate
+from insert_candidate_data import Database
 
 
 def selectting_user_operation(selection):
@@ -164,4 +166,12 @@ def get_candidator_details():
             break
         
         qualification_status = input("If You have More Education Qualification Press [Y], OtherWise Press [N] : ")
+        
+    
+    candidator_obj = Candidate(candidator_name,nic_number,candidator_age,candidator_qualification,citizen_state,party_reg_number)
+    db_candidate_obj = Database
+    citizen_obj = database_insert.Database
+    db_candidate_obj.insert_candidate_data(candidator_obj)
+    citizen_obj.insert_citizen_data(candidator_obj)
+    
     

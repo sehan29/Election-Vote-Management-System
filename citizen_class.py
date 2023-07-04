@@ -1,5 +1,4 @@
-
-class Citizen:
+class Citizen():
     
     def __init__(self,name,age,nic,province):
         

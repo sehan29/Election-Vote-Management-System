@@ -11,8 +11,8 @@ class Database:
         try:
             
             cursor = con.cursor()
-            mysql_query = "INSERT INTO candidator_table name, age, nic, province VALUES(%s,%s,%s,%s)"
-            values_of_citizen("asas","asas","asasa","sas")
+            mysql_query = "INSERT INTO candidator_table (candidator_nic, party_id) VALUES(%s,%s)"
+            values_of_citizen = (candidate_data.nic,candidate_data.party_number)
             cursor.execute(mysql_query,values_of_citizen)
             con.commit()
             last_raw_id = cursor.lastrowid
@@ -21,7 +21,19 @@ class Database:
             
             #To insert qualifications into another table
             #More Qualification
+            for data in candidate_data.education_qualification:
+                print(data)
+                mysql_query = "INSERT INTO candidator_qualifications (candidator_id, qualifications) VALUES(%s,%s);"
+                qualification_values = (candidate_data.nic,data)
+                cursor.execute(mysql_query,qualification_values)
+            
+            con.commit()
+            qq = cursor.lastrowid
+                
+                
+                
             print(last_raw_id)
+            print(qq)
         
         
         except Exception as e:
