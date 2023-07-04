@@ -56,6 +56,7 @@ def administration_operation(selection):
     
     elif(selection == 2):
         print(selection)
+        os.system('cls')
         get_candidator_details()
         
     elif(selection == 3):
@@ -140,4 +141,27 @@ def view_registered_parties():
     
     
 def get_candidator_details():
+    
+    candidator_qualification = []
+    comman_header()
+    candidator_name = input("Enter Candidator Name : ")
+    candidator_age = input("Enter Candidator Age : ")
+    nic_number = input("Enter Candidator National ID Card Number : ")
+    citizen_state = input("Enter Candidator State : ")
+    obj = Retrive_data
+    obj.fetch_parties_data()
+    party_reg_number = input("Enter Party Registration Number : ")  
+    qualification_status = input("If You have Education Qualification Press [Y], OtherWise Press [N] : ")
+        
+    while True:
+      
+        if(qualification_status == 'y' or qualification_status == 'Y'):
+            
+            qualifications = input("Enter Candidator Education Qualification : ")
+            candidator_qualification.append(qualifications)
+        
+        else:
+            break
+        
+        qualification_status = input("If You have More Education Qualification Press [Y], OtherWise Press [N] : ")
     
