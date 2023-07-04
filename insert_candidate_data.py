@@ -6,7 +6,7 @@ con = mysql.connector.connect(host="localhost", user="root", password="",databas
 
 class Database:
     
-    def insert_candidate_data(self,candidate_data):
+    def insert_candidate_data(candidate_data):
         
         try:
             

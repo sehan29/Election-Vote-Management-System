@@ -32,6 +32,14 @@ def comman_header():
     
     
 def registered_citizen_template():
+    
     print("No\t|\tName\t\t|\tAge\t|\tNIC\t|\tProvince")
     print("--------|-----------------------|---------------|---------------|-----------------")
+    
+
+def registered_parties_template():
+    
+    print("No\t|\tParty Name\t|\tPresident Name\t|\tRegistration Number\t")
+    print("--------|-----------------------|-----------------------|---------------------------")
+
     
