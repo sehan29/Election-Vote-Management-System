@@ -4,7 +4,8 @@ def index():
     print("-----------------------------------------------------------------\n")
     print("1. Election Administration.")
     print("2. Vote.")
-    print("3. Exit.")
+    print("3. Election Result.")
+    print("4. Exit.")
     print("\n-----------------------------------------------------------------")
             
 
@@ -96,6 +97,11 @@ def user_preferance_list(preferance_list):
     print("\n-------------------------------------------------")
     print(f"|\t{preferance_list[0]}\t|\t{preferance_list[1]}\t|\t{preferance_list[2]}\t|")
     print("-------------------------------------------------")
+    
+    
 
+def election_result():
+    print("\n1.View Candidators Result.")
+    print("2.Final Result (Ghraph).")
 
 

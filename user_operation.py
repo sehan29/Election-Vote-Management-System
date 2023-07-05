@@ -12,6 +12,7 @@ from user_dash import table_data
 from user_dash import candidator_table_header
 from user_dash import candidator_details
 from user_dash import user_preferance_list
+from user_dash import election_result
 from citizen_class import Citizen
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
@@ -37,8 +38,14 @@ def selectting_user_operation(selection):
         print(selection)
         os.system('cls')
         make_vote()
-        
+    
     elif(selection == 3):
+        print(selection)
+        os.system('cls')
+        view_results()
+        
+        
+    elif(selection == 4):
         sys.exit()
         
     else:
@@ -207,8 +214,19 @@ def make_vote():
         
         os.system('cls')
         """ print(user_data) """
-        votting_panel_header(user_data[0][1],user_data[0][3],user_data[0][4])
-        select_one_party(user_data[0][4],user_data[0][3])
+        
+        if(user_data[0][5] == 1):
+            
+            print("\n\n\t==================================================================")
+            print("\t\t-------------- You Have Already Voted ----------------")
+            print("\t==================================================================\n\n")
+        
+        else:
+            
+            print(user_data[0][5])
+            print(type(user_data[0][5]))
+            votting_panel_header(user_data[0][1],user_data[0][3],user_data[0][4])
+            select_one_party(user_data[0][4],user_data[0][3])
 
 
 def select_one_party(province,voter_nic):
@@ -284,6 +302,40 @@ def select_one_party(province,voter_nic):
         
             
 
+    
+    
+    
+
+def view_results():
+    
+    comman_header()
+    election_result()
+    
+    
+    try:
+        
+        user_selection = int(input("Select One Operation :"))
+        select_operation(user_selection)
+    
+    except Exception as e:
+        
+        print("An error occurred:", str(e))
+        
+        
+
+
+def select_operation(operation):
+    
+    
+    if(operation == 1):
+        print(operation)
+    
+    elif(operation == 2):
+        print(operation)
+    
+    else:
+        
+        print("\n\t\t-------------- Invalid Index ------------------ ")
     
     
     
