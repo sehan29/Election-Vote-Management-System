@@ -73,3 +73,19 @@ def table_data(number,party_name):
     print(f"|\t{number}\t|\t{party_name}\t\t|")
     print("-----------------------------------------")
 
+
+
+def candidator_table_header():
+
+    print("-------------------------------------------------")
+    print("|\tNo\t|\tCandidator Name\t\t|")
+    print("-------------------------------------------------")
+    
+
+
+def candidator_details(number,name):
+
+    print(f"\t{number}\t|\t{name}\t\t\t")
+    print("-------------------------------------------------")
+    
+        

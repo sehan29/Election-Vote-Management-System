@@ -9,6 +9,8 @@ from user_dash import registered_parties_template
 from user_dash import votting_panel_header
 from user_dash import table_header
 from user_dash import table_data
+from user_dash import candidator_table_header
+from user_dash import candidator_details
 from citizen_class import Citizen
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
@@ -17,6 +19,8 @@ from registration_parties import Database
 from candidate_class import Candidate
 from insert_candidate_data import Database
 from get_user_details_from_id import Retrive_data_1
+from filter_candidators import Retrive_Party
+
 
 
 def selectting_user_operation(selection):
@@ -192,6 +196,7 @@ def make_vote():
     get_nic_number = input("Enter Your NIC Number : ")
     user_data = retrive_obj.fetch_data_from_id(get_nic_number)
     
+    
     if(user_data == "No Index"):
         
         print("----- Invalid Index Number -----")
@@ -199,13 +204,17 @@ def make_vote():
     else:
         
         os.system('cls')
+        """ print(user_data) """
         votting_panel_header(user_data[0][1],user_data[0][3],user_data[0][4])
-        select_one_party()
+        select_one_party(user_data[0][4])
 
 
-def select_one_party():
+def select_one_party(province):
     
     
+    party_obj = Retrive_Party
+    fetch_candidator = Retrive_Party
+    accourding_to_province = Retrive_Party
     parties_fetch_obj = Retrive_data_1
     party_details = parties_fetch_obj.fetch_parties_data()
     
@@ -213,6 +222,31 @@ def select_one_party():
     
     for data in party_details:
         
-        
         table_data(data[0],data[1])
+    
+    
+    select_party = int(input("Select The Party Number : "))
+    party_reg_number = party_obj.fetch_parties_data(select_party)
+    candidator_id = fetch_candidator.fetch_candidators(party_reg_number[0][0])
+    
+    candidator_table_header()
+    
+    
+    for data in candidator_id:
+        
+        
+        details = accourding_to_province.fetch_candidators_according_to_province(data[0],province)
+        
+        
+        if(details == 'None'):
+            
+            pass
+        
+        else:
+            
+            candidator_details(details[0][1],details[0][0])
+            
+
+    
+    
     
