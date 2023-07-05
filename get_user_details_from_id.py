@@ -48,7 +48,7 @@ class Retrive_data_1:
             mysql_query = 'SELECT * FROM party_data;'
             cursor.execute(mysql_query)
             parties_details = cursor.fetchall()  
-            print(parties_details)
+            """ print(parties_details) """
             
             return parties_details 
             

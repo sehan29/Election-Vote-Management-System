@@ -7,6 +7,8 @@ from user_dash import comman_header
 from user_dash import registered_citizen_template
 from user_dash import registered_parties_template
 from user_dash import votting_panel_header
+from user_dash import table_header
+from user_dash import table_data
 from citizen_class import Citizen
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
@@ -206,6 +208,11 @@ def select_one_party():
     
     parties_fetch_obj = Retrive_data_1
     party_details = parties_fetch_obj.fetch_parties_data()
-"""     print(party_details)
-    print("Print Parties Details") """
+    
+    table_header()
+    
+    for data in party_details:
+        
+        
+        table_data(data[0],data[1])
     

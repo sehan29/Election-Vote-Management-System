@@ -59,3 +59,17 @@ def votting_panel_header(name,nic,province):
     print("----------------------------------------------------------------------------------")
     
     
+
+def table_header():
+    
+    print("-----------------------------------------")
+    print("|\tNo\t|\tParty Name\t|")
+    print("-----------------------------------------")
+    
+
+
+
+def table_data(number,party_name):
+    print(f"|\t{number}\t|\t{party_name}\t\t|")
+    print("-----------------------------------------")
+
