@@ -88,4 +88,14 @@ def candidator_details(number,name):
     print(f"\t{number}\t|\t{name}\t\t\t")
     print("-------------------------------------------------")
     
-        
+    
+  
+    
+def user_preferance_list(preferance_list):
+    
+    print("\n-------------------------------------------------")
+    print(f"|\t{preferance_list[0]}\t|\t{preferance_list[1]}\t|\t{preferance_list[2]}\t|")
+    print("-------------------------------------------------")
+
+
+

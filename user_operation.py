@@ -11,6 +11,7 @@ from user_dash import table_header
 from user_dash import table_data
 from user_dash import candidator_table_header
 from user_dash import candidator_details
+from user_dash import user_preferance_list
 from citizen_class import Citizen
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
@@ -20,6 +21,7 @@ from candidate_class import Candidate
 from insert_candidate_data import Database
 from get_user_details_from_id import Retrive_data_1
 from filter_candidators import Retrive_Party
+from record_votes import Save_Votes
 
 
 
@@ -206,16 +208,17 @@ def make_vote():
         os.system('cls')
         """ print(user_data) """
         votting_panel_header(user_data[0][1],user_data[0][3],user_data[0][4])
-        select_one_party(user_data[0][4])
+        select_one_party(user_data[0][4],user_data[0][3])
 
 
-def select_one_party(province):
+def select_one_party(province,voter_nic):
     
-    
+    user_preferance =[]
     party_obj = Retrive_Party
     fetch_candidator = Retrive_Party
     accourding_to_province = Retrive_Party
     parties_fetch_obj = Retrive_data_1
+    votes_obj = Save_Votes
     party_details = parties_fetch_obj.fetch_parties_data()
     
     table_header()
@@ -246,7 +249,42 @@ def select_one_party(province):
             
             candidator_details(details[0][1],details[0][0])
             
+            
+    
+    for i in range(0,3):
+        
+        prefreance = input(f"Enter Candidator Number {i+1} : ")
+        user_preferance.append(prefreance)
+    
+    user_preferance_list(user_preferance)
+    
+    
+    save_statues = input("Do You Want To Submit Data (Y/N) : ")
+    
+    if(save_statues == 'y' or save_statues == 'Y'):
+        
+        succes_val = votes_obj.insert_vote_data(voter_nic,user_preferance)
+        
+        if(succes_val):
+            
+            print("\n\t\t ---------- Records Saved Succesfully ------------\n\n")
+        else:
+            
+            print("\n\t\t ---------- Records Saved Unsucces ---------------\n\n")
+            
+            main_function.main_function()
+        
+ 
+    
+    else:
+        
+        main_function.main_function()
+        print("Return To the Main Menu")
+    
+        
+            
 
+    
     
     
     
