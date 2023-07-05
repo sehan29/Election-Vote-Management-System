@@ -16,7 +16,7 @@ def main_function():
         
         os.system('cls')
         print("An error occurred:", str(e))
-        main_function()
+        main_function() 
 
 
 

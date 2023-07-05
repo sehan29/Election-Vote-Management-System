@@ -6,6 +6,7 @@ from user_dash import administration_function
 from user_dash import comman_header
 from user_dash import registered_citizen_template
 from user_dash import registered_parties_template
+from user_dash import votting_panel_header
 from citizen_class import Citizen
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
@@ -13,6 +14,7 @@ from politicle_ import Politicle_part
 from registration_parties import Database
 from candidate_class import Candidate
 from insert_candidate_data import Database
+from get_user_details_from_id import Retrive_data_1
 
 
 def selectting_user_operation(selection):
@@ -25,6 +27,8 @@ def selectting_user_operation(selection):
     
     elif(selection == 2):
         print(selection)
+        os.system('cls')
+        make_vote()
         
     elif(selection == 3):
         sys.exit()
@@ -174,4 +178,34 @@ def get_candidator_details():
     db_candidate_obj.insert_candidate_data(candidator_obj)
     citizen_obj.insert_citizen_data(candidator_obj)
     
+    
+    
+    
+
+def make_vote():
+    
+    
+    retrive_obj = Retrive_data_1
+    comman_header()
+    get_nic_number = input("Enter Your NIC Number : ")
+    user_data = retrive_obj.fetch_data_from_id(get_nic_number)
+    
+    if(user_data == "No Index"):
+        
+        print("----- Invalid Index Number -----")
+    
+    else:
+        
+        os.system('cls')
+        votting_panel_header(user_data[0][1],user_data[0][3],user_data[0][4])
+        select_one_party()
+
+
+def select_one_party():
+    
+    
+    parties_fetch_obj = Retrive_data_1
+    party_details = parties_fetch_obj.fetch_parties_data()
+"""     print(party_details)
+    print("Print Parties Details") """
     

@@ -42,4 +42,20 @@ def registered_parties_template():
     print("No\t|\tParty Name\t|\tPresident Name\t|\tRegistration Number\t")
     print("--------|-----------------------|-----------------------|---------------------------")
 
+
+
+
+
+    
+
+def votting_panel_header(name,nic,province):
+
+    print("----------------------------------------------------------------------------------")
+    print("\t\t\tELECTION VOTE CALCULATTING SYSTEM")
+    print("----------------------------------------------------------------------------------\n")
+    print("Name : ",name)
+    print("NIC Number : ",nic)
+    print("Province : ",province)
+    print("----------------------------------------------------------------------------------")
+    
     

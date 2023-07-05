@@ -1,1 +1,1 @@
-        super().__init__(name,age,nic,province)
+Retrive_data
