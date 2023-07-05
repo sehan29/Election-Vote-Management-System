@@ -68,6 +68,80 @@ class Retrive_Party:
             
             print("An error occurred:", str(e)) 
             
+    
+    
+    def fetch_all_candidators_id():
+        
+        try:
+            
+            cursor = con.cursor()
+            query = "SELECT candidator_nic FROM candidator_table;"
+            cursor.execute(query)
+            fetched_data = cursor.fetchall()
+            
+            return fetched_data
+            
+                
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
+            
+    
+    
+    def fetch_party(c_id):
+        try:
+            
+            cursor = con.cursor()
+            query = "SELECT candidator_nic FROM candidator_table;"
+            cursor.execute(query)
+            fetched_data = cursor.fetchall()
+            
+            return fetched_data
+            
+                
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
+            
+    
+    def get_party_name(c_id):
+        
+        try:
+            
+            cursor = con.cursor()
+            query = "SELECT party_id FROM candidator_table WHERE candidator_nic = %s;"
+            cursor.execute(query,(c_id,))
+            fetched_data = cursor.fetchall()
+            
+            
+            return fetched_data[0][0]
+            
+                
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
+            
+    
+    def fetch_party_name(p_id):
+        
+        try:
+            
+            cursor = con.cursor()
+            query = "SELECT party_name FROM party_data WHERE reg_no = %s;"
+            cursor.execute(query,(p_id,))
+            fetched_data = cursor.fetchall()
+            
+            
+            return fetched_data[0][0]
+            
+                
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
+        
+        
+        
+        
             
             
              

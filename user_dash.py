@@ -102,6 +102,19 @@ def user_preferance_list(preferance_list):
 
 def election_result():
     print("\n1.View Candidators Result.")
-    print("2.Final Result (Ghraph).")
+    print("2.Final Result (Ghraph).\n")
 
 
+
+def candidator_result_header():
+    
+    print("-----------------------------------------------------------------------------------------")
+    print("|\tID\t|\tName\t|\tProvince\t|\tParty\t|\tVotes\t|")
+    print("-----------------------------------------------------------------------------------------")
+    
+
+def candidate_body_details(id,name,province,party,votes):
+    print(f"{id}\t|\t{name}\t|\t{province}\t|\t{party}\t|\t{votes}")
+    print("-----------------------------------------------------------------------------------------")
+    
+    

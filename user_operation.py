@@ -14,6 +14,7 @@ from user_dash import candidator_details
 from user_dash import user_preferance_list
 from user_dash import election_result
 from citizen_class import Citizen
+from user_dash import candidate_body_details
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
 from politicle_ import Politicle_part
@@ -23,7 +24,8 @@ from insert_candidate_data import Database
 from get_user_details_from_id import Retrive_data_1
 from filter_candidators import Retrive_Party
 from record_votes import Save_Votes
-
+from user_dash import candidator_result_header
+from count_votes import Votes
 
 
 def selectting_user_operation(selection):
@@ -328,7 +330,8 @@ def select_operation(operation):
     
     
     if(operation == 1):
-        print(operation)
+        
+        view_candidators_result()
     
     elif(operation == 2):
         print(operation)
@@ -336,7 +339,57 @@ def select_operation(operation):
     else:
         
         print("\n\t\t-------------- Invalid Index ------------------ ")
+        
+
+
+        
+        
+def view_candidators_result():
+    
+    candidator_result_header()
+    
+    get_candidates_id()
     
     
+    
+    
+def get_candidates_id():
+    
+    
+    i = 0
+    number_of_votes=[]
+    party = []
+    candidator_data = []
+    votes_obj = Votes
+    candidator_details = Retrive_data_1
+    candidator_obj = Retrive_Party
+    can_obj = Retrive_Party
+    party_name = Retrive_Party
+    ids = candidator_obj.fetch_all_candidators_id()
+
+    
+    for data in ids:
+        
+        vote = votes_obj.fetch_votes(data[0])
+        number_of_votes.append(vote)
+        general_data = candidator_details.fetch_data_from_id(data[0])
+        candidator_data.append(general_data)
+        party_id = can_obj.get_party_name(data[0])
+        pt_name = party_name.fetch_party_name(party_id)
+        party.append(pt_name)
+    
+    
+
+    for x in candidator_data:
+        
+
+        number_of_votes[i]
+        party[i]
+        candidate_body_details(x[0][3],x[0][1],x[0][4],party[i],number_of_votes[i])
+        i=i+1
+        
+        
+        
+        
     
     

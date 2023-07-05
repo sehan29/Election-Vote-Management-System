@@ -20,6 +20,8 @@ class Retrive_data_1:
                 cursor.execute(mysql_query)
                 fetch_data = cursor.fetchall()
                 """ print(fetch_data) """
+                
+                """ print(fetch_data) """
                 return fetch_data
             
             else:
