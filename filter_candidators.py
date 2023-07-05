@@ -13,7 +13,7 @@ class Retrive_Party:
             mysql_query = f'SELECT reg_no FROM party_data WHERE id = {party_id};'
             cursor.execute(mysql_query)
             x = cursor.fetchall()     
-            print(x)    
+            """ print(x)     """
             
             return x
                  
@@ -34,7 +34,7 @@ class Retrive_Party:
             candidators_id = cursor.fetchall()
             
             return candidators_id
-            print(candidators_id)     
+            """ print(candidators_id)   """   
             
         
         except Exception as e:
