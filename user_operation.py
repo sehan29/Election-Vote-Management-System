@@ -1,6 +1,7 @@
 import os
 import time
 import sys
+import matplotlib.pyplot as plt
 import main_fun as main_function
 from user_dash import administration_function
 from user_dash import comman_header
@@ -335,6 +336,10 @@ def select_operation(operation):
     
     elif(operation == 2):
         print(operation)
+        
+        print("Show as a Chart")
+        
+        view_chart()
     
     else:
         
@@ -389,7 +394,23 @@ def get_candidates_id():
         i=i+1
         
         
+
+
         
         
     
+def view_chart():
     
+    parties = ["UNP","SLPP","SLC","ASD"]
+    vote_count = [100,200,55,78]
+    explode1 = (0.1,0,0,0)
+    plt.style.use('ggplot')
+    plt.title('Election Results 2023')
+    plt.pie(x=vote_count, explode=explode1, labels=parties, autopct='%.2f%%', shadow=True,startangle=90)
+    plt.axis('equal')
+    plt.legend(loc='upper left')
+    
+    plt.show()
+    
+
+view_chart()
