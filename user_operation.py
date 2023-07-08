@@ -14,7 +14,9 @@ from user_dash import candidator_table_header
 from user_dash import candidator_details
 from user_dash import user_preferance_list
 from user_dash import election_result
+from user_dash import candidator_header
 from citizen_class import Citizen
+from user_dash import registered_candidators
 from user_dash import candidate_body_details
 import Insert_citizen_data as database_insert
 from fetch_citizen_data import Retrive_data
@@ -28,6 +30,7 @@ from record_votes import Save_Votes
 from user_dash import candidator_result_header
 from count_votes import Votes
 
+party_totals = {}
 
 def selectting_user_operation(selection):
     
@@ -41,6 +44,7 @@ def selectting_user_operation(selection):
         print(selection)
         os.system('cls')
         make_vote()
+        main_function.main_function()
     
     elif(selection == 3):
         print(selection)
@@ -79,23 +83,27 @@ def administration_operation(selection):
         
     
     elif(selection == 2):
-        print(selection)
+
         os.system('cls')
         get_candidator_details()
         
     elif(selection == 3):
-        print(selection)
+
         os.system('cls')
         get_citizen_details()
         
     elif(selection == 4):
-        print(selection)
+  
         os.system('cls')
         view_registered_parties()
+        main_function.main_function()
         
              
     elif(selection == 5):
         print(selection)
+        os.system('cls')
+        view_registered_candidators()
+        main_function.main_function()
         
     elif(selection == 6):
         print(selection)
@@ -226,8 +234,7 @@ def make_vote():
         
         else:
             
-            print(user_data[0][5])
-            print(type(user_data[0][5]))
+
             votting_panel_header(user_data[0][1],user_data[0][3],user_data[0][4])
             select_one_party(user_data[0][4],user_data[0][3])
 
@@ -370,6 +377,11 @@ def get_candidates_id():
     candidator_obj = Retrive_Party
     can_obj = Retrive_Party
     party_name = Retrive_Party
+    name_new = ""
+
+    
+
+
     ids = candidator_obj.fetch_all_candidators_id()
 
     
@@ -382,16 +394,26 @@ def get_candidates_id():
         party_id = can_obj.get_party_name(data[0])
         pt_name = party_name.fetch_party_name(party_id)
         party.append(pt_name)
+        
     
+
     
 
     for x in candidator_data:
         
-
+        name_len = len(str(x[0][1]))
         number_of_votes[i]
         party[i]
-        candidate_body_details(x[0][3],x[0][1],x[0][4],party[i],number_of_votes[i])
+        
+        for p in range(17):
+            
+            if(p>name_len):
+                
+                name_new = name_new + " "
+                
+        candidate_body_details(x[0][3],x[0][1]+name_new,x[0][4],party[i],number_of_votes[i])
         i=i+1
+        name_new = ""
         
         
 
@@ -401,16 +423,92 @@ def get_candidates_id():
     
 def view_chart():
     
-    parties = ["UNP","SLPP","SLC","ASD"]
-    vote_count = [100,200,55,78]
-    explode1 = (0.1,0,0,0)
-    plt.style.use('ggplot')
-    plt.title('Election Results 2023')
-    plt.pie(x=vote_count, explode=explode1, labels=parties, autopct='%.2f%%', shadow=True,startangle=90)
-    plt.axis('equal')
-    plt.legend(loc='upper left')
     
-    plt.show()
+    i = 0
+    number_of_votes=[]
+    party = []
+    candidator_data = []
+    votes_obj = Votes
+    candidator_details = Retrive_data_1
+    candidator_obj = Retrive_Party
+    can_obj = Retrive_Party
+    party_name = Retrive_Party
+    vote_groups = {}
+    expl = []
+
+    
     
 
-view_chart()
+
+    ids = candidator_obj.fetch_all_candidators_id()
+
+    
+    for data in ids:
+        
+        vote = votes_obj.fetch_votes(data[0])
+        number_of_votes.append(vote)
+        general_data = candidator_details.fetch_data_from_id(data[0])
+        candidator_data.append(general_data)
+        party_id = can_obj.get_party_name(data[0])
+        pt_name = party_name.fetch_party_name(party_id)
+        party.append(pt_name)
+        
+    
+
+
+    for i in range(len(number_of_votes)):
+        if party[i] not in vote_groups:
+            vote_groups[party[i]] = []
+            party_totals[party[i]] = 0
+        vote_groups[party[i]].append(number_of_votes[i])
+        party_totals[party[i]] += number_of_votes[i]
+    
+    party_names = Retrive_Party
+    names = party_names.fetch_all_party_details()
+    names_list = list(party_totals.keys())
+    vote_count = list(party_totals.values())
+    
+    print(names_list)
+    print(vote_count)
+    
+    for i in vote_count:
+        expl.append(0)
+    
+    
+    expl[0] = 0.1
+    
+    
+    explo = tuple(expl)
+    
+    print(explo)
+    
+    
+
+    explode1 = explo
+    plt.style.use('ggplot')
+    plt.title('Election Results 2023')
+    plt.pie(x=vote_count, explode=explode1, labels=names_list, autopct='%.2f%%', shadow=True,startangle=90)
+    plt.axis('equal')
+    plt.legend(loc='upper left')
+    plt.show()
+    
+    
+
+def view_registered_candidators():
+    
+    retrive_obj = Retrive_Party
+    retrive_name_of_party = Retrive_Party
+    retrive_name = Retrive_Party
+    details = retrive_obj.fetch_all_details_of_candidator()
+    
+    comman_header()
+    candidator_header()
+    
+    for data in details:
+        
+        party_name = retrive_name_of_party.fetch_party_name(data[2])
+        candidator_name = retrive_name.get_name(data[1])
+        registered_candidators(data[1],candidator_name[0][0],candidator_name[0][1],party_name)
+        
+        
+    

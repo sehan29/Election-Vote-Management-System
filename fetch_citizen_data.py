@@ -110,7 +110,7 @@ class Retrive_data:
                         id_primary = id_primary + " "
                 
                 
-                for i in range(27):
+                for i in range(30):
                     
                     if(i>president_len):
                         
@@ -122,7 +122,7 @@ class Retrive_data:
                         
                         age_new = age_new + " "
                         
-                for i in range(17):
+                for i in range(25):
                     
                     if(i>party_len):
                         
@@ -130,7 +130,7 @@ class Retrive_data:
 
 
                 
-                print(str(data[0])+id_primary+str(data[1])+name_new+str(data[2])+age_new+str(data[3])+id_new)
+                print(str(data[0])+id_primary+str(data[1])+id_new+str(data[2])+name_new+str(data[3]))
                 print("--------|-----------------------|-----------------------|---------------------------",end="\n")
                 name_new = ""
                 age_new=""
@@ -147,5 +147,8 @@ class Retrive_data:
             
             con.close()
             cursor.close()
+            
+            
+    
         
  

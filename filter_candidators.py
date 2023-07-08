@@ -139,8 +139,51 @@ class Retrive_Party:
             
             print("An error occurred:", str(e)) 
         
+    
+    def fetch_all_party_details():
         
+        try:
+            cursor = con.cursor()
+            query = "SELECT party_name FROM party_data;"
+            cursor.execute(query)
+            parties_data = cursor.fetchall()
+            
+            return parties_data
         
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
+            
+            
+    
+    def fetch_all_details_of_candidator():
+        
+        try:
+            cursor = con.cursor()
+            query = "SELECT * FROM candidator_table;"
+            cursor.execute(query)
+            parties_data = cursor.fetchall()
+            
+            return parties_data
+        
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
+            
+    
+    def get_name(id):
+        
+        try:
+            cursor = con.cursor()
+            query = "SELECT name,c_province FROM citizen_details WHERE c_id = %s;"
+            cursor.execute(query,(id,))
+            parties_data = cursor.fetchall()
+            
+            return parties_data
+        
+        except Exception as e:
+            
+            print("An error occurred:", str(e)) 
         
             
             
