@@ -111,7 +111,9 @@ def administration_operation(selection):
         view_registered_citizen()
         
     elif(selection == 7):
-        print(selection)
+        
+        os.system('cls')
+        main_function.main_function()
         
     else:
         
